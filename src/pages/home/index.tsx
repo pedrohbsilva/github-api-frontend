@@ -3,20 +3,21 @@ import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import {useAuth} from '../../hooks/auth';
 import { Container, LoginButton, Title} from './styles';
+import { CircularProgress } from '@material-ui/core';
 
 const Home: React.FC = () => {
   const history = useHistory();
   const parsed = queryString.parse(window.location.search);
-  const clientId = process.env.REACT_APP_GITHUB_CLIENT_KEY;
+  const clientId = process.env.GITHUB_CLIENT_ID;
   const {signIn} = useAuth();
 
   if(parsed.code){
     signIn(parsed);
     history.push('/users');
     return (
-      <div>
-        <h1>carregando...</h1>
-      </div>
+      <Container>
+          <CircularProgress color="primary" size={40}/>
+      </Container>
     )
   } else {  
     return (

@@ -73,20 +73,6 @@ const Details: React.FC = () => {
               <p>Date of the login creation: {new Intl.DateTimeFormat('pt-BR').format(new Date(user.created_at))}</p>
             </div>
           </header>
-          {/* <ul>
-            <li>
-              <strong>{repository.stargazers_count}</strong>
-              <span>Starts</span>
-            </li>
-            <li>
-              <strong>{repository.forks_count}</strong>
-              <span>Forks</span>
-            </li>
-            <li>
-              <strong>{repository.open_issues_count}</strong>
-              <span>Issues abertas</span>
-            </li>
-          </ul> */}
         </RepositoryInfo>
       )}
 
