@@ -4,11 +4,11 @@ import queryString from 'query-string';
 import {useAuth} from '../../hooks/auth';
 import { Container, LoginButton, Title} from './styles';
 import { CircularProgress } from '@material-ui/core';
-
 const Home: React.FC = () => {
   const history = useHistory();
   const parsed = queryString.parse(window.location.search);
-  const clientId = process.env.REACT_APP_CUSTOM_ENV_VAR;
+  const clientId = process.env.REACT_APP_GITHUB_CLIENT_KEY;
+  console.log(clientId)
   const {signIn} = useAuth();
 
   if(parsed.code){
