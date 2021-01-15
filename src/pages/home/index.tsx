@@ -7,8 +7,7 @@ import { CircularProgress } from '@material-ui/core';
 const Home: React.FC = () => {
   const history = useHistory();
   const parsed = queryString.parse(window.location.search);
-  const clientId = process.env.REACT_APP_GITHUB_CLIENT_KEY;
-  console.log(clientId)
+  const clientId = 'c0f09952542c50653d07';
   const {signIn} = useAuth();
 
   if(parsed.code){
