@@ -12,7 +12,7 @@ interface IssuesProps{
 const IssuesComponent: React.FC<IssuesProps> = ({url, infoP, infoStrong,link, children}) => {
   return(
     <>
-      <a href={url} >
+      <a href={url}>
         <div>
           <strong>{infoStrong}</strong>
           <p>{infoP}</p>
