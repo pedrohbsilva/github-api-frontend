@@ -66,6 +66,13 @@ export const RepositoryInfo = styled.section`
       }
     }
   }
+  @media(max-width: 600px){
+      > header {
+      > div {
+        grid-template-rows: 1fr;
+      }
+    }
+  }
 `;
 
 export const Issues = styled.div`
@@ -106,4 +113,5 @@ export const Issues = styled.div`
       color: #cbcbd6;
     }
   }
+  
 `;
