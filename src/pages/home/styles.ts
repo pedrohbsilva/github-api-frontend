@@ -18,6 +18,9 @@ export const Title = styled.h1`
 `;
 
 export const LoginButton = styled.a`
+  display:flex;
+  align-items:center;
+  justify-content: center;
   background: black;
   color: white;
   text-decoration: none;
