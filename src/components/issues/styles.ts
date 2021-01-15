@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Issues = styled.div`
   margin-top: 50px;
-  > button div {
+  > a div {
     transition: 0.2s;
     &:hover {
       transform: translateX(10px);
