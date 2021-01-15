@@ -4,6 +4,7 @@ import queryString from 'query-string';
 import {useAuth} from '../../hooks/auth';
 import { Container, LoginButton, Title} from './styles';
 import { CircularProgress } from '@material-ui/core';
+import {FiLogIn} from 'react-icons/fi'
 const Home: React.FC = () => {
   const history = useHistory();
   const parsed = queryString.parse(window.location.search);
@@ -23,6 +24,7 @@ const Home: React.FC = () => {
       <Container>
         <Title>Github Consult API APP</Title>
         <LoginButton href={`https://github.com/login/oauth/authorize?client_id=${clientId}&scope=user`}>
+          <FiLogIn size={24} style={{marginRight: 8}}/>
           Login with GitHub
         </LoginButton>
       </Container>

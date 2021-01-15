@@ -5,6 +5,7 @@ import { Header, RepositoryInfo, Issues } from './styles';
 import api from '../../services/api';
 import { Container } from '../home/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import IssuesComponent from '../../components/issues';
 
 interface ParamsProps{
   username: string;
@@ -67,8 +68,6 @@ const Details: React.FC = () => {
             <div>
               <strong>Login: {user.login}</strong>
               <p>id: {user.id}</p>
-            </div>
-            <div>
               <strong> </strong>
               <p>Date of the login creation: {new Intl.DateTimeFormat('pt-BR').format(new Date(user.created_at))}</p>
             </div>
@@ -78,14 +77,13 @@ const Details: React.FC = () => {
 
       <Issues>
         {repositories && repositories.map((issue:  RepositoryProps) => (
-          <a key={issue.id} href={issue.html_url}>
-            <div>
-              <strong>name: {issue.name}</strong>
-              <p>id: {issue.id}</p>
-            </div>
-
-            <FiChevronRight size={20} />
-          </a>
+          <IssuesComponent 
+            key={issue.id}
+            url={issue.html_url}
+            infoStrong={`name: ${issue.name}`}
+            infoP={`id: ${issue.id}`}
+            link=""
+          />
         ))}
       </Issues>
   

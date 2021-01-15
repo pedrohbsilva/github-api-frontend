@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { useParams } from 'react-router-dom';
-import { FiChevronRight, FiArrowRightCircle, FiArrowLeftCircle, FiLogOut } from 'react-icons/fi';
+import { FiArrowRightCircle, FiArrowLeftCircle, FiLogOut } from 'react-icons/fi';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { 
-  Container, 
-  ContainerCard, 
-  ImgCard, 
-  InfoText, 
-  InfoCard, 
-  InfoButton,
+  Container,
   ButtonPage,
   LogoutButton
  } from './styles';
 import { useAuth } from '../../hooks/auth';
+import IssuesComponent from '../../components/issues';
+import { Issues } from '../../components/issues/styles';
 
 interface ParamsProps{
   page: string;
@@ -61,13 +58,12 @@ const Users: React.FC = () => {
 
   if(loading){
     return (
-      <Container>
+      <div style={{display: `flex`, justifyContent: 'center', alignItems: "center"}}>
         <CircularProgress color="primary" size={40}/>
-      </Container>
+      </div>
     )
   }
     return (
-      <>
         <Container>
           <header>
             <LogoutButton type="button" onClick={() => signOut()}>
@@ -75,19 +71,19 @@ const Users: React.FC = () => {
               Logout
             </LogoutButton>
           </header>
+          <Issues>
           {users.map((user: UserProps)=>(
-            <ContainerCard key={user.id}>
-              <ImgCard src={user.avatar_url} alt="user"/>
-              <InfoCard>
-                <InfoText>ID: {user.id}</InfoText>
-                <InfoText>Login: {user.login}</InfoText>
-              </InfoCard>
-              <InfoButton to={`/details/${user.login}`}>
-                <FiChevronRight size={20}/>
-              </InfoButton>
-            </ContainerCard>
+            <IssuesComponent 
+              key={user.id}
+              url={user.html_url}
+              infoStrong={`name: ${user.login}`}
+              infoP={`id: ${user.id}`}
+              link={`/details/${user.login}`}
+            />
           ))}
-          <div style={{width: 400, display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+          </Issues>
+          
+          <div style={{width: '100%', marginTop: 8,display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
           { Number(page) > 1 &&     
             <ButtonPage to={`/users/${(Number(page) - 1)}`} >
               <FiArrowLeftCircle size={24} style={{marginRight: 6}}/>
@@ -100,7 +96,6 @@ const Users: React.FC = () => {
           </ButtonPage>
           </div>
         </Container>
-      </>
     )
 }
 
